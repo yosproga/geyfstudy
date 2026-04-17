@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7HSTZBZNL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Q7HSTZBZNL');
+</script>
+
+<title>GeyfStudy</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+    --azul:#1e3a5f;
+    --azul2:#2f5d8c;
+    --gris:#eef3f8;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+body{
+    background:var(--gris);
+}
+header{
+    background:linear-gradient(90deg,var(--azul),var(--azul2));
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+.container{
+    padding:25px;
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+}
+.card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+.card img{
+    width:100%;
+    border-radius:10px;
+}
+h2{
+    color:var(--azul);
+}
+button{
+    margin-top:10px;
+    padding:10px;
+    background:var(--azul2);
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+.flashcard{
+    background:#dbeafe;
+    padding:10px;
+    margin-top:10px;
+    border-radius:8px;
+    cursor:pointer;
+}
+.quiz-option{
+    background:#e0f2fe;
+    padding:10px;
+    margin-top:5px;
+    border-radius:8px;
+    cursor:pointer;
+}
+.timer{
+    font-size:25px;
+    margin-top:10px;
+    color:var(--azul);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1><i class="fas fa-graduation-cap"></i> GeyfStudy</h1>
+    <p>Aprende mejor con técnicas de estudio</p>
+</header>
+
+<div class="container">
+<div class="grid">
+
+<!-- Matemáticas -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1635372722656-389f87a941b7?w=600">
+<h2><i class="fas fa-calculator"></i> Matemáticas</h2>
+<p><b>Técnica:</b> Práctica activa</p>
+<p>Resolver ejercicios paso a paso.</p>
+
+<div class="flashcard" onclick="flipCard(this,'Practicar constantemente mejora la lógica matemática.')">
+🃏 ¿Cómo mejorar?
+</div>
+
+<div class="quiz-option" onclick="quiz(this,true)">Resolver ejercicios</div>
+<div class="quiz-option" onclick="quiz(this,false)">Solo leer teoría</div>
+
+<div class="timer" id="t1">25:00</div>
+<button onclick="startPomodoro('t1')">Pomodoro</button>
+</div>
+
+<!-- Español -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600">
+<h2><i class="fas fa-pen"></i> Español</h2>
+<p><b>Técnica:</b> Lectura comprensiva</p>
+<p>Leer y resumir textos.</p>
+
+<div class="flashcard" onclick="flipCard(this,'Leer y resumir mejora comprensión.')">
+🃏 ¿Cómo estudiar?
+</div>
+
+<div class="quiz-option" onclick="quiz(this,true)">Leer y resumir</div>
+<div class="quiz-option" onclick="quiz(this,false)">Memorizar</div>
+
+<div class="timer" id="t2">20:00</div>
+<button onclick="startPomodoro('t2')">Pomodoro</button>
+</div>
+
+<!-- Historia -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=600">
+<h2><i class="fas fa-landmark"></i> Historia</h2>
+<p><b>Técnica:</b> Método Feynman</p>
+<p>Explicar el tema con tus palabras.</p>
+
+<div class="flashcard" onclick="flipCard(this,'Explicar demuestra que entiendes.')">
+🃏 ¿Cómo aprender?
+</div>
+
+<div class="quiz-option" onclick="quiz(this,true)">Explicar el tema</div>
+<div class="quiz-option" onclick="quiz(this,false)">Memorizar fechas</div>
+
+<div class="timer" id="t3">25:00</div>
+<button onclick="startPomodoro('t3')">Pomodoro</button>
+</div>
+
+<!-- Biología -->
+<div class="card">
+<img src="https://images.unsplash.com/photo-1532187643603-ba119ca4109e?w=600">
+<h2><i class="fas fa-dna"></i> Biología</h2>
+<p><b>Técnica:</b> Mapas mentales</p>
+<p>Organizar información visualmente.</p>
+
+<div class="flashcard" onclick="flipCard(this,'Relacionar conceptos mejora memoria.')">
+🃏 ¿Cómo estudiar?
+</div>
+
+<div class="quiz-option" onclick="quiz(this,true)">Mapas mentales</div>
+<div class="quiz-option" onclick="quiz(this,false)">Leer sin ordenar</div>
+
+<div class="timer" id="t4">20:00</div>
+<button onclick="startPomodoro('t4')">Pomodoro</button>
+</div>
+
+</div>
+</div>
+
+<script>
+function flipCard(card,text){
+    card.innerHTML=text;
+}
+
+function quiz(option,correct){
+    if(correct){
+        option.style.background="lightgreen";
+        alert("Correcto");
+    }else{
+        option.style.background="salmon";
+        alert("Incorrecto");
+    }
+}
+
+function startPomodoro(id){
+    let time=1500;
+    const timer=document.getElementById(id);
+    let interval=setInterval(()=>{
+        let min=Math.floor(time/60);
+        let sec=time%60;
+        timer.innerText=`${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+        time--;
+        if(time<0){
+            clearInterval(interval);
+            alert("Tiempo terminado");
+        }
+    },1000);
+}
+</script>
+
+</body>
+</html>
