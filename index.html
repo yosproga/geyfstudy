@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GeyfStudy</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#0f172a,#1e3a8a);
+    color:white;
+    display:flex;
+    min-height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:260px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    padding:25px;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.25);
+}
+
+.logo{
+    font-size:2rem;
+    font-weight:bold;
+    margin-bottom:40px;
+}
+
+.logo i{
+    color:#60a5fa;
+}
+
+.nav-item{
+    padding:15px;
+    margin-bottom:10px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.nav-item:hover{
+    background:rgba(255,255,255,0.12);
+    transform:translateX(8px);
+}
+
+/* MAIN */
+.main{
+    flex:1;
+    padding:35px;
+}
+
+/* HERO */
+.hero{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border-radius:20px;
+    padding:30px;
+    margin-bottom:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    animation: fadeUp 1s ease;
+}
+
+.hero h1{
+    font-size:2.5rem;
+    margin-bottom:10px;
+}
+
+.hero p{
+    color:#cbd5e1;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+/* CARDS */
+.card{
+    background:rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.2);
+    transition:all 0.35s ease;
+    animation: fadeUp 1s ease;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.02);
+    box-shadow:0 15px 35px rgba(96,165,250,0.25);
+}
+
+.card i{
+    font-size:2rem;
+    margin-bottom:15px;
+    color:#60a5fa;
+}
+
+.card h2{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#dbeafe;
+    line-height:1.4;
+}
+
+/* BUTTONS */
+button{
+    margin-top:15px;
+    padding:12px 18px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#3b82f6,#2563eb);
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:bold;
+}
+
+button:hover{
+    transform:scale(1.05);
+    box-shadow:0 10px 20px rgba(59,130,246,0.35);
+}
+
+/* POMODORO */
+.pomodoro{
+    margin-top:30px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.2);
+    animation: fadeUp 1.2s ease;
+}
+
+.timer{
+    font-size:3rem;
+    margin-top:15px;
+    color:#93c5fd;
+    font-weight:bold;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo"><i class="fas fa-graduation-cap"></i> GeyfStudy</div>
+    <div class="nav-item"><i class="fas fa-home"></i> Inicio</div>
+    <div class="nav-item"><i class="fas fa-book"></i> Materias</div>
+    <div class="nav-item"><i class="fas fa-clock"></i> Pomodoro</div>
+    <div class="nav-item"><i class="fas fa-chart-line"></i> Progreso</div>
+</div>
+
+<div class="main">
+
+    <div class="hero">
+        <h1>Aprende con métodos inteligentes</h1>
+        <p>Una plataforma moderna para estudiar por materia con técnicas efectivas y herramientas de enfoque.</p>
+        <button>Comenzar ahora</button>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <i class="fas fa-calculator"></i>
+            <h2>Matemáticas</h2>
+            <p><b>Práctica activa:</b> resolver ejercicios paso a paso para desarrollar lógica.</p>
+        </div>
+
+        <div class="card">
+            <i class="fas fa-pen"></i>
+            <h2>Español</h2>
+            <p><b>Lectura comprensiva:</b> leer, analizar y resumir ideas principales.</p>
+        </div>
+
+        <div class="card">
+            <i class="fas fa-landmark"></i>
+            <h2>Historia</h2>
+            <p><b>Método Feynman:</b> explicar los temas con palabras simples para comprender mejor.</p>
+        </div>
+
+        <div class="card">
+            <i class="fas fa-dna"></i>
+            <h2>Biología</h2>
+            <p><b>Mapas mentales:</b> conectar conceptos visualmente para memorizar.</p>
+        </div>
+
+    </div>
+
+    <div class="pomodoro">
+        <h2><i class="fas fa-clock"></i> Sesión Pomodoro</h2>
+        <p>Enfócate durante 25 minutos y luego toma un descanso.</p>
+        <div class="timer" id="timer">25:00</div>
+        <button onclick="startPomodoro()">Iniciar sesión</button>
+    </div>
+
+</div>
+
+<script>
+function startPomodoro(){
+    let time = 1500;
+    const timer = document.getElementById("timer");
+
+    let interval = setInterval(()=>{
+        let min = Math.floor(time/60);
+        let sec = time%60;
+
+        timer.innerText = `${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+
+        time--;
+
+        if(time < 0){
+            clearInterval(interval);
+            alert("¡Pomodoro terminado!");
+        }
+    },1000);
+}
+</script>
+
+</body>
+</html>
