@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GeyfStudy</title>
 
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7HSTZBZNL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q7HSTZBZNL');
+</script>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -12,7 +22,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family:'Segoe UI',sans-serif;
 }
 
 body{
@@ -26,9 +36,9 @@ body{
 .sidebar{
     width:260px;
     background:rgba(255,255,255,0.08);
-    backdrop-filter: blur(12px);
+    backdrop-filter:blur(12px);
     padding:25px;
-    box-shadow: 4px 0 20px rgba(0,0,0,0.25);
+    box-shadow:4px 0 20px rgba(0,0,0,0.25);
 }
 
 .logo{
@@ -63,12 +73,12 @@ body{
 /* HERO */
 .hero{
     background:rgba(255,255,255,0.08);
-    backdrop-filter: blur(10px);
+    backdrop-filter:blur(10px);
     border-radius:20px;
     padding:30px;
     margin-bottom:30px;
     box-shadow:0 10px 30px rgba(0,0,0,0.25);
-    animation: fadeUp 1s ease;
+    animation:fadeUp 1s ease;
 }
 
 .hero h1{
@@ -90,12 +100,12 @@ body{
 /* CARDS */
 .card{
     background:rgba(255,255,255,0.08);
-    backdrop-filter: blur(12px);
+    backdrop-filter:blur(12px);
     border-radius:20px;
     padding:25px;
     box-shadow:0 8px 25px rgba(0,0,0,0.2);
     transition:all 0.35s ease;
-    animation: fadeUp 1s ease;
+    animation:fadeUp 1s ease;
 }
 
 .card:hover{
@@ -140,11 +150,11 @@ button:hover{
 .pomodoro{
     margin-top:30px;
     background:rgba(255,255,255,0.08);
-    backdrop-filter: blur(12px);
+    backdrop-filter:blur(12px);
     border-radius:20px;
     padding:25px;
     box-shadow:0 8px 25px rgba(0,0,0,0.2);
-    animation: fadeUp 1.2s ease;
+    animation:fadeUp 1.2s ease;
 }
 
 .timer{
@@ -154,7 +164,7 @@ button:hover{
     font-weight:bold;
 }
 
-/* ANIMATIONS */
+/* ANIMATION */
 @keyframes fadeUp{
     from{
         opacity:0;
@@ -182,7 +192,7 @@ button:hover{
     <div class="hero">
         <h1>Aprende con métodos inteligentes</h1>
         <p>Una plataforma moderna para estudiar por materia con técnicas efectivas y herramientas de enfoque.</p>
-        <button>Comenzar ahora</button>
+        <button onclick="startLearning()">Comenzar ahora</button>
     </div>
 
     <div class="grid">
@@ -224,6 +234,11 @@ button:hover{
 
 <script>
 function startPomodoro(){
+    gtag('event', 'pomodoro_start', {
+        event_category: 'Pomodoro',
+        event_label: 'Inicio Pomodoro'
+    });
+
     let time = 1500;
     const timer = document.getElementById("timer");
 
@@ -237,9 +252,24 @@ function startPomodoro(){
 
         if(time < 0){
             clearInterval(interval);
+
+            gtag('event', 'pomodoro_complete', {
+                event_category: 'Pomodoro',
+                event_label: 'Pomodoro completado'
+            });
+
             alert("¡Pomodoro terminado!");
         }
     },1000);
+}
+
+function startLearning(){
+    gtag('event', 'start_learning_click', {
+        event_category: 'Engagement',
+        event_label: 'Comenzar ahora'
+    });
+
+    alert("¡Bienvenido a GeyfStudy!");
 }
 </script>
 
